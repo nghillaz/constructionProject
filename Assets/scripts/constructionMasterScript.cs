@@ -9,22 +9,101 @@ public class constructionMasterScript : MonoBehaviour {
     public GameObject roof;
     public LayerMask layermask;
 
+    public int productionProgress;
+
+    priorityNode[] finalOutput;
+
     public int WIDTH;
     public int HEIGHT;
     public float globalBudget;
     public float currentMoney;
     GameObject moneyText;
-
+    
     Camera mainCamera;
+
+    GameObject sendForIdle;
 
     // Use this for initialization
     void Start () {
+        sendForIdle = new GameObject();
+        sendForIdle.tag = "IdleObject";
+
+        productionProgress = 0;
+
         moneyText = GameObject.Find("moneyText");
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         foundation = GameObject.Find("foundation");
         walls = GameObject.Find("walls");
         roof = GameObject.Find("roof");
-	}
+        
+        calculatePriorities();
+    }
+
+    public class priorityNode{
+        public bool isStart;
+        public string name;
+
+        public void initializeName()
+        {
+            name = name.Substring(0, name.Length - 3);
+        }
+    }
+
+    public void calculatePriorities()
+    {
+        //TODO
+        //update this when new jobs are added
+        float[] priorities = new float[12];
+        string[] prioritiesNames = new string[12];
+        finalOutput = new priorityNode[prioritiesNames.Length * 2];
+
+        priorities[0] = PlayerPrefs.GetFloat("foundationMin");
+        priorities[1]  = PlayerPrefs.GetFloat("foundationMax");
+        priorities[2]  = PlayerPrefs.GetFloat("wallsMin");
+        priorities[3]  = PlayerPrefs.GetFloat("wallsMax");
+        priorities[4]  = PlayerPrefs.GetFloat("roofMin");
+        priorities[5]  = PlayerPrefs.GetFloat("roofMax");
+        priorities[6]  = PlayerPrefs.GetFloat("tileMin");
+        priorities[7]  = PlayerPrefs.GetFloat("tileMax");
+        priorities[8]  = PlayerPrefs.GetFloat("drywallMin");
+        priorities[9]  = PlayerPrefs.GetFloat("drywallMax");
+        priorities[10]  = PlayerPrefs.GetFloat("roofTilesMin");
+        priorities[11] = PlayerPrefs.GetFloat("roofTilesMax");
+
+        prioritiesNames[0] = "foundationMin";
+        prioritiesNames[1] = "foundationMax";
+        prioritiesNames[2] = "wallsMin";
+        prioritiesNames[3] = "wallsMax";
+        prioritiesNames[4] = "roofMin";
+        prioritiesNames[5] = "roofMax";
+        prioritiesNames[6] = "tileMin";
+        prioritiesNames[7] = "tileMax";
+        prioritiesNames[8] = "drywallMin";
+        prioritiesNames[9] = "drywallMax";
+        prioritiesNames[10] = "roofTilesMin";
+        prioritiesNames[11] = "roofTilesMax";
+
+        float smallest = 1000f;
+        int smallestIndex = -1;
+        
+        for (int i = 0; i < priorities.Length; i++)
+        {
+            for(int j = 0; j < priorities.Length; j++)
+            {
+                if(priorities[j] < smallest && priorities[j] > -1f)
+                {
+                    smallest = priorities[j];
+                    smallestIndex = j;
+                }
+            }
+            priorities[smallestIndex] = -2f;
+            finalOutput[i] = new priorityNode();
+            finalOutput[i].name = prioritiesNames[smallestIndex];
+            finalOutput[i].isStart = prioritiesNames[smallestIndex].Contains("Min");
+            finalOutput[i].initializeName();
+            smallest = 1000f;
+        }
+    }
 
     public void initializeBudget(float input)
     {
@@ -46,7 +125,6 @@ public class constructionMasterScript : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, layermask))
             {
-                Debug.Log("hit");
                 if (hit.collider.gameObject.tag == "Employee")
                 {
                     GameObject.Find("employeeAssignmentBlock").GetComponent<employeeAssignmentBlockScript>().askForOrders(hit.collider.gameObject);
@@ -79,7 +157,44 @@ public class constructionMasterScript : MonoBehaviour {
         }
     }
 
-    public GameObject getNextRequirement(string orders)
+
+
+    public GameObject getPriorityJob()
+    {
+        Debug.Log("priority job request received");
+        for (int i = 0; i <= productionProgress; i++)
+        {
+            //ok, so we increase the production progress if it's a start ALWAYS
+            //we increase the production progress if it's an end && the production of that component is finished && the index == productionProgress
+            string orders = finalOutput[i].name;
+
+            //first increase
+            if (finalOutput[i].isStart)
+                productionProgress++;
+
+            Debug.Log(orders);
+            GameObject potentialJob = getSpecificJob(orders);
+
+            //we have to go idle if we've received idle orders from constructionMaster
+            if (potentialJob != null && potentialJob.tag == "IdleObject")
+                return null;
+
+            //second increase
+            if (!finalOutput[i].isStart && potentialJob == null && i == productionProgress)
+                productionProgress++;
+
+            if (potentialJob != null)
+            {
+                Debug.Log("priority job found: " + orders);
+                return potentialJob;                
+            }
+        }
+        return null;
+    }
+
+
+
+    public GameObject getSpecificJob(string orders)
     {
         switch (orders)
         {
@@ -107,6 +222,8 @@ public class constructionMasterScript : MonoBehaviour {
                 }
                 break;
             case "roof":
+                if (!walls.GetComponent<wallsScript>().isCompleted())
+                    return sendForIdle;
                 if (walls.GetComponent<wallsScript>().isCompleted() && !roof.GetComponent<roofScript>().isCompleted())
                 {
                     //and still some components that can be assigned workers
@@ -118,6 +235,8 @@ public class constructionMasterScript : MonoBehaviour {
                 }
                 break;
             case "tile":
+                if (!foundation.GetComponent<foundationScript>().isCompleted())
+                    return sendForIdle;
                 if (foundation.GetComponent<foundationScript>().isCompleted() && !foundation.GetComponent<foundationScript>().isTileCompleted())
                 {
                     //and still some components that can be assigned workers
@@ -129,6 +248,8 @@ public class constructionMasterScript : MonoBehaviour {
                 }
                 break;
             case "drywall":
+                if (!walls.GetComponent<wallsScript>().isCompleted())
+                    return sendForIdle;
                 if (walls.GetComponent<wallsScript>().isCompleted() && !walls.GetComponent<wallsScript>().isDrywallCompleted())
                 {
                     //and still some components that can be assigned workers
@@ -144,6 +265,8 @@ public class constructionMasterScript : MonoBehaviour {
                 }
                 break;
             case "roofTiles":
+                if (!roof.GetComponent<roofScript>().isCompleted())
+                    return sendForIdle;
                 if (roof.GetComponent<roofScript>().isCompleted() && !roof.GetComponent<roofScript>().isRoofTilesCompleted())
                 {
                     //and still some components that can be assigned workers

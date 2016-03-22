@@ -56,7 +56,7 @@ public class employeeAssignmentBlockScript : MonoBehaviour {
         }
         else
         {
-            selectedEmployee.GetComponent<employeeScript>().findWork(orders);
+            selectedEmployee.GetComponent<employeeScript>().forceWork(orders);
             blockGradient.SetActive(false);
             employeeOrders.SetActive(false);
             timeManagementScript.unPause();

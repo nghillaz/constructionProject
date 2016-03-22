@@ -59,7 +59,7 @@ public class truckScript : MonoBehaviour {
             if (transform.childCount > 0)
             {
                 GameObject.Find(transform.GetChild(0).GetComponent<employeeScript>().truckingMaterial).GetComponent<materialsScript>().amountRemaining += fetchSize;
-                transform.GetChild(0).GetComponent<employeeScript>().findWork(null /*needs to be replaced*/);
+                transform.GetChild(0).GetComponent<employeeScript>().priorityJob();
                 transform.DetachChildren();
             }
         }

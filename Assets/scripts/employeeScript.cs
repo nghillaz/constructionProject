@@ -90,6 +90,22 @@ public class employeeScript : MonoBehaviour {
         return state;
     }
 
+    public void priorityJob()
+    {
+        Debug.Log("priorityJob");
+        target = constructionMaster.GetComponent<constructionMasterScript>().getPriorityJob();
+        if (target == null)
+        {
+            becomeIdle();
+        }
+        else
+        {
+            stopped = false;
+            GetComponent<NavMeshAgent>().enabled = true;
+            fetchMaterial();
+        }
+    }
+
     public void updateBasedOnState()
     {
         switch (state)
@@ -102,49 +118,49 @@ public class employeeScript : MonoBehaviour {
                         if (GameObject.Find("foundation").GetComponent<foundationScript>().anyWorkingSpotsLeft())
                         {
                             state = 0;
-                            findWork("foundation");
+                            forceWork("foundation");
                         }
                         else
-                            becomeIdle();
+                            priorityJob();
                         break;
                     case "walls":
                         if (GameObject.Find("walls").GetComponent<wallsScript>().anyWorkingSpotsLeft())
                         {
                             state = 0;
-                            findWork("walls");
+                            forceWork("walls");
                         }
                         else
-                            becomeIdle();
+                            priorityJob();
                         break;
                     case "roof":
                         if (GameObject.Find("roof").GetComponent<roofScript>().anyWorkingSpotsLeft())
                         {
                             state = 0;
-                            findWork("roof");
+                            forceWork("roof");
                         }
                         else
-                            becomeIdle();
+                            priorityJob();
                         break;
                     case "tile":
                         if (GameObject.Find("foundation").GetComponent<foundationScript>().anyWorkingTileSpotsLeft())
                         {
                             state = 0;
-                            findWork("tile");
+                            forceWork("tile");
                         }
                         else
-                            becomeIdle();
+                            priorityJob();
                         break;
                     case "drywall":
                         if (GameObject.Find("walls").GetComponent<wallsScript>().anyWorkingDrywallSpotsLeft())
                         {
                             state = 0;
-                            findWork("drywall");
+                            forceWork("drywall");
                         }
                         else
-                            becomeIdle();
+                            priorityJob();
                         break;
                     default:
-                        becomeIdle();
+                        priorityJob();
                         break;
                 }
                 break;
@@ -158,6 +174,7 @@ public class employeeScript : MonoBehaviour {
                 goUseMaterials();
                 break;
             default:
+                priorityJob();
                 break;
         }
     }
@@ -176,6 +193,7 @@ public class employeeScript : MonoBehaviour {
 
     void becomeIdle()
     {
+        transform.position = GameObject.Find("pingpongTable").transform.position;
         animation.clip = idleAnimation;
         animation.Play();
         Debug.Log("idling");
@@ -236,11 +254,11 @@ public class employeeScript : MonoBehaviour {
         }
     }
 
-    public void findWork(string orders)
+    public void forceWork(string orders)
     {
         abandonJob();
 
-        target = constructionMaster.GetComponent<constructionMasterScript>().getNextRequirement(orders);
+        target = constructionMaster.GetComponent<constructionMasterScript>().getSpecificJob(orders);
         if(target == null)
         {
             becomeIdle();

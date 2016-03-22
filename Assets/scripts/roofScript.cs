@@ -38,7 +38,6 @@ public class roofScript : MonoBehaviour {
                     transform.position.y + .5f, transform.position.z + j - HEIGHT / 2), transform.rotation));
             }
         }
-        Debug.Log(obstacles.Count);
     }
 
     public bool isCompleted()

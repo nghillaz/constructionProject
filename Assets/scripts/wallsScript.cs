@@ -34,7 +34,6 @@ public class wallsScript : MonoBehaviour {
                     bool isCorner = false;
                     if ((i == 0 && j == 0) || (i == 0 && j == HEIGHT - 1) || (i == WIDTH - 1 && j == HEIGHT - 1) || (i == WIDTH - 1 && j == 0))
                     {
-                        Debug.Log("corner");
                         isCorner = true;
                     }
                     int angle = 2;
@@ -57,7 +56,6 @@ public class wallsScript : MonoBehaviour {
                 }
             }
         }
-        Debug.Log(wallPlacementSpots.Count);
     }
 
         // Update is called once per frame

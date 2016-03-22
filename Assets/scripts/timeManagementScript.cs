@@ -18,14 +18,12 @@ public class timeManagementScript : MonoBehaviour {
 
     public static void pause()
     {
-        Debug.Log("pause");
         previousTime = globalTimeMultiplier;
         globalTimeMultiplier = 0;
     }
 
     public static void unPause()
     {
-        Debug.Log("unpause");
         globalTimeMultiplier = previousTime;
     }
 	

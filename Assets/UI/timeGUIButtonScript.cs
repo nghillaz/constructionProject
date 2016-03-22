@@ -39,4 +39,13 @@ public class timeGUIButtonScript : MonoBehaviour {
     {
         GameObject.Find("employeeSpawner").GetComponent<employeeSpawnerScript>().spawnEmployee();
     }
+    public void reassignEmployees()
+    {
+        GameObject[] Employees = GameObject.FindGameObjectsWithTag("Employee");
+        for(int i = 0; i < Employees.Length; i++)
+        {
+            if(Employees[i].GetComponent<employeeScript>().state == -1)
+                Employees[i].GetComponent<employeeScript>().priorityJob();
+        }
+    }
 }

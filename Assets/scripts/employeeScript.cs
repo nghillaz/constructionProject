@@ -9,6 +9,7 @@ public class employeeScript : MonoBehaviour {
     NavMeshAgent agent;
     public int state;
     Animation animation;
+    AnimationClip carryAnimation;
     AnimationClip idleAnimation;
     AnimationClip walkAnimation;
     AnimationClip hammerAnimation;
@@ -41,6 +42,7 @@ public class employeeScript : MonoBehaviour {
         constructionMaster = GameObject.Find("constructionMaster");
         concreteMaterial = GameObject.Find("concrete");
         animation = GetComponent<Animation>();
+        carryAnimation = animation.GetClip("Carry");
         idleAnimation = animation.GetClip("idle");
         walkAnimation = animation.GetClip("walk");
         hammerAnimation = animation.GetClip("hammer");
@@ -92,7 +94,6 @@ public class employeeScript : MonoBehaviour {
 
     public void priorityJob()
     {
-        Debug.Log("priorityJob");
         target = constructionMaster.GetComponent<constructionMasterScript>().getPriorityJob();
         if (target == null)
         {
@@ -181,6 +182,7 @@ public class employeeScript : MonoBehaviour {
 
     public void updateTime(float input)
     {
+        animation["Carry"].speed = input/4;
         animation["idle"].speed = input/4;
         animation["walk"].speed = input/4;
         animation["hammer"].speed = input/4;
@@ -196,7 +198,6 @@ public class employeeScript : MonoBehaviour {
         transform.position = GameObject.Find("pingpongTable").transform.position;
         animation.clip = idleAnimation;
         animation.Play();
-        Debug.Log("idling");
         stopped = true;
         GetComponent<NavMeshAgent>().enabled = false;
         state = -1;
@@ -300,7 +301,6 @@ public class employeeScript : MonoBehaviour {
     {
         animation.clip = hammerAnimation;
         animation.Play();
-        Debug.Log("constructComponent");
         GetComponent<NavMeshAgent>().enabled = false;
         stopped = true;
         state = 3;
@@ -312,7 +312,6 @@ public class employeeScript : MonoBehaviour {
         animation["climb"].speed = Mathf.Abs(animation["climb"].speed);
         animation.Play();
         GameObject ladder = GameObject.FindGameObjectWithTag("Ladder");
-        Debug.Log("climbing");
         GetComponent<NavMeshAgent>().enabled = false;
         transform.position = new Vector3(ladder.transform.position.x, transform.position.y, ladder.transform.position.z);
         state = -2;
@@ -332,7 +331,6 @@ public class employeeScript : MonoBehaviour {
 
     public void setStopClimbing()
     {
-        Debug.Log("stopped climbing");
         if (state == -5)
         {
             state = 2;
@@ -348,10 +346,11 @@ public class employeeScript : MonoBehaviour {
 
     public void goUseMaterials()
     {
+        animation.clip = carryAnimation;
+        animation.Play();
         GetComponent<NavMeshAgent>().enabled = true;
         if (target.gameObject.GetComponent<floorsScript>().floor == 1 && GetComponent<floorsScript>().floor == 0)
         {
-            Debug.Log("ladder is destination");
             agent.SetDestination(GameObject.FindWithTag("Ladder").transform.position);
             state = -3;
         }

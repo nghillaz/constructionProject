@@ -54,8 +54,8 @@ public class constructionMasterScript : MonoBehaviour {
         //TODO
         //update this when new jobs are added
         float[] priorities = new float[12];
-        string[] prioritiesNames = new string[12];
-        finalOutput = new priorityNode[prioritiesNames.Length * 2];
+        string[] prioritiesNames = new string[priorities.Length];
+        finalOutput = new priorityNode[prioritiesNames.Length];
 
         priorities[0] = PlayerPrefs.GetFloat("foundationMin");
         priorities[1]  = PlayerPrefs.GetFloat("foundationMax");
@@ -161,18 +161,22 @@ public class constructionMasterScript : MonoBehaviour {
 
     public GameObject getPriorityJob()
     {
-        Debug.Log("priority job request received");
+        if (productionProgress >= finalOutput.Length)
+            return null;
+
         for (int i = 0; i <= productionProgress; i++)
         {
+            if (productionProgress >= finalOutput.Length)
+                return null;
+
             //ok, so we increase the production progress if it's a start ALWAYS
             //we increase the production progress if it's an end && the production of that component is finished && the index == productionProgress
             string orders = finalOutput[i].name;
 
             //first increase
-            if (finalOutput[i].isStart)
+            if (finalOutput[productionProgress].isStart)
                 productionProgress++;
 
-            Debug.Log(orders);
             GameObject potentialJob = getSpecificJob(orders);
 
             //we have to go idle if we've received idle orders from constructionMaster
@@ -185,7 +189,6 @@ public class constructionMasterScript : MonoBehaviour {
 
             if (potentialJob != null)
             {
-                Debug.Log("priority job found: " + orders);
                 return potentialJob;                
             }
         }
@@ -205,7 +208,6 @@ public class constructionMasterScript : MonoBehaviour {
                     //and still some components that can be assigned workers
                     if (foundation.GetComponent<foundationScript>().anyWorkingSpotsLeft())
                     {
-                        Debug.Log("foundation component sent");
                         return foundation.GetComponent<foundationScript>().getNextRequirement();
                     }
                 }
@@ -216,7 +218,6 @@ public class constructionMasterScript : MonoBehaviour {
                     //and still some components that can be assigned workers
                     if (walls.GetComponent<wallsScript>().anyWorkingSpotsLeft())
                     {
-                        Debug.Log("wall component sent");
                         return walls.GetComponent<wallsScript>().getNextRequirement();
                     }
                 }
@@ -229,7 +230,6 @@ public class constructionMasterScript : MonoBehaviour {
                     //and still some components that can be assigned workers
                     if (roof.GetComponent<roofScript>().anyWorkingSpotsLeft())
                     {
-                        Debug.Log("roof component sent");
                         return roof.GetComponent<roofScript>().getNextRequirement();
                     }
                 }

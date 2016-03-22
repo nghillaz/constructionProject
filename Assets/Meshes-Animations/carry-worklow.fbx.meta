@@ -1,0 +1,366 @@
+fileFormatVersion: 2
+guid: 73ced0a36325b0340b0b847e49ee3b07
+timeCreated: 1458643538
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Base_mesh
+    100004: Biker_mesh
+    100006: Body_jnt
+    100008: Cap_mesh
+    100010: Cheerleader_mesh
+    100012: Clown_mesh
+    100014: Emo_mesh
+    100016: Foot_Left_jnt
+    100018: Foot_Right_jnt
+    100020: Footballer_mesh
+    100022: Grandma_mesh
+    100024: Hair_mesh
+    100026: Hand_Left_jnt
+    100028: Hand_Right_jnt
+    100030: Hat_jnt
+    100032: Head_jnt
+    100034: Hippie_mesh
+    100036: Hips_jnt
+    100038: LowerArm_Left_jnt
+    100040: LowerArm_Right_jnt
+    100042: LowerLeg_Left_jnt
+    100044: LowerLeg_Right_jnt
+    100046: Luchador_mesh
+    100048: Mountie_mesh
+    100050: Root_jnt
+    100052: Runner_mesh
+    100054: ShopKeeper_mesh
+    100056: Spine_jnt
+    100058: Tourist_mesh
+    100060: UpperArm_Left_jnt
+    100062: UpperArm_Right_jnt
+    100064: UpperLeg_Left_jnt
+    100066: UpperLeg_Right_jnt
+    400000: //RootNode
+    400002: Base_mesh
+    400004: Biker_mesh
+    400006: Body_jnt
+    400008: Cap_mesh
+    400010: Cheerleader_mesh
+    400012: Clown_mesh
+    400014: Emo_mesh
+    400016: Foot_Left_jnt
+    400018: Foot_Right_jnt
+    400020: Footballer_mesh
+    400022: Grandma_mesh
+    400024: Hair_mesh
+    400026: Hand_Left_jnt
+    400028: Hand_Right_jnt
+    400030: Hat_jnt
+    400032: Head_jnt
+    400034: Hippie_mesh
+    400036: Hips_jnt
+    400038: LowerArm_Left_jnt
+    400040: LowerArm_Right_jnt
+    400042: LowerLeg_Left_jnt
+    400044: LowerLeg_Right_jnt
+    400046: Luchador_mesh
+    400048: Mountie_mesh
+    400050: Root_jnt
+    400052: Runner_mesh
+    400054: ShopKeeper_mesh
+    400056: Spine_jnt
+    400058: Tourist_mesh
+    400060: UpperArm_Left_jnt
+    400062: UpperArm_Right_jnt
+    400064: UpperLeg_Left_jnt
+    400066: UpperLeg_Right_jnt
+    4300000: Base_mesh
+    4300002: Hair_mesh
+    4300004: Tourist_mesh
+    4300006: Footballer_mesh
+    4300008: Clown_mesh
+    4300010: Hippie_mesh
+    4300012: Grandma_mesh
+    4300014: ShopKeeper_mesh
+    4300016: Mountie_mesh
+    4300018: Luchador_mesh
+    4300020: Biker_mesh
+    4300022: Emo_mesh
+    4300024: Cheerleader_mesh
+    4300026: Cap_mesh
+    4300028: Runner_mesh
+    7400000: Carry
+    7400002: WorkLow
+    7400004: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Base_mesh
+    13700002: Biker_mesh
+    13700004: Cap_mesh
+    13700006: Cheerleader_mesh
+    13700008: Clown_mesh
+    13700010: Emo_mesh
+    13700012: Footballer_mesh
+    13700014: Grandma_mesh
+    13700016: Hair_mesh
+    13700018: Hippie_mesh
+    13700020: Luchador_mesh
+    13700022: Mountie_mesh
+    13700024: Runner_mesh
+    13700026: ShopKeeper_mesh
+    13700028: Tourist_mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Carry
+      takeName: Take 001
+      firstFrame: 153
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base_mesh
+        weight: 1
+      - path: Biker_mesh
+        weight: 1
+      - path: Cap_mesh
+        weight: 1
+      - path: Cheerleader_mesh
+        weight: 1
+      - path: Clown_mesh
+        weight: 1
+      - path: Emo_mesh
+        weight: 1
+      - path: Footballer_mesh
+        weight: 1
+      - path: Grandma_mesh
+        weight: 1
+      - path: Hair_mesh
+        weight: 1
+      - path: Hippie_mesh
+        weight: 1
+      - path: Luchador_mesh
+        weight: 1
+      - path: Mountie_mesh
+        weight: 1
+      - path: Root_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/Head_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/Head_jnt/Hat_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt/LowerArm_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt/LowerArm_Left_jnt/Hand_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt/LowerArm_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt/LowerArm_Right_jnt/Hand_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt/LowerLeg_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt/LowerLeg_Left_jnt/Foot_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt/LowerLeg_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt/LowerLeg_Right_jnt/Foot_Right_jnt
+        weight: 1
+      - path: Runner_mesh
+        weight: 1
+      - path: ShopKeeper_mesh
+        weight: 1
+      - path: Tourist_mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: WorkLow
+      takeName: Take 001
+      firstFrame: 271
+      lastFrame: 288
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base_mesh
+        weight: 1
+      - path: Biker_mesh
+        weight: 1
+      - path: Cap_mesh
+        weight: 1
+      - path: Cheerleader_mesh
+        weight: 1
+      - path: Clown_mesh
+        weight: 1
+      - path: Emo_mesh
+        weight: 1
+      - path: Footballer_mesh
+        weight: 1
+      - path: Grandma_mesh
+        weight: 1
+      - path: Hair_mesh
+        weight: 1
+      - path: Hippie_mesh
+        weight: 1
+      - path: Luchador_mesh
+        weight: 1
+      - path: Mountie_mesh
+        weight: 1
+      - path: Root_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/Head_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/Head_jnt/Hat_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt/LowerArm_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Left_jnt/LowerArm_Left_jnt/Hand_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt/LowerArm_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/Body_jnt/Spine_jnt/UpperArm_Right_jnt/LowerArm_Right_jnt/Hand_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt/LowerLeg_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Left_jnt/LowerLeg_Left_jnt/Foot_Left_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt/LowerLeg_Right_jnt
+        weight: 1
+      - path: Root_jnt/Hips_jnt/UpperLeg_Right_jnt/LowerLeg_Right_jnt/Foot_Right_jnt
+        weight: 1
+      - path: Runner_mesh
+        weight: 1
+      - path: ShopKeeper_mesh
+        weight: 1
+      - path: Tourist_mesh
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

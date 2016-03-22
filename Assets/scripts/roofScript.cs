@@ -8,6 +8,7 @@ public class roofScript : MonoBehaviour {
 
     public GameObject obstacle;
     public GameObject strut;
+    public GameObject shingle;
     ArrayList obstacles;
     ArrayList struts;
 
@@ -59,7 +60,17 @@ public class roofScript : MonoBehaviour {
             //a row has been completed, so fill in the roof with shingles
             if(i%HEIGHT == 0 && obstacles.Count != 0)
             {
-                //shingles don't exist yet
+                //TODO
+                /*
+                GameObject first = (GameObject)Instantiate(shingle, transform.position, transform.rotation);
+                first.transform.position = first.transform.position + new Vector3(transform.localScale.x / 2, 0, 0);
+                first.transform.localScale = new Vector3(transform.localScale.x / 2, 0, 1);
+                first.transform.Rotate(Vector3.right, 45f);
+                GameObject second = (GameObject)Instantiate(shingle, transform.position, transform.rotation);
+                second.transform.position = second.transform.position + new Vector3(-transform.localScale.x / 2, 0, 0);
+                first.transform.localScale = new Vector3(transform.localScale.x / 2, 0, 1);
+                second.transform.Rotate(Vector3.right, -45f);
+                */
             }
             if (((GameObject)obstacles[i]).GetComponent<roofObstacleScript>().state != -2)
             {
@@ -116,7 +127,7 @@ public class roofScript : MonoBehaviour {
             {
                 newStrut.transform.position += new Vector3(.5f, 0, 0);
             }
-            //TODO REMOVE THIS WHEN FURTHERING THE CONSTRUCTION PROCESS - THIS IS ALPHA ONLY
+            //TODO REMOVE THIS WHEN FURTHERING THE CONSTRUCTION PROCESS - THIS IS FOR BETA ONLY
             /*
             if (struts.Count == WIDTH)
             {

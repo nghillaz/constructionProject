@@ -29,30 +29,38 @@ public class wallsScript : MonoBehaviour {
             {
                 if (i == 0 || j == 0 || i == WIDTH - 1 || j == HEIGHT - 1)
                 {
-                    GameObject newWall = (GameObject)Instantiate(wallPlacementSpot, new Vector3(transform.position.x + i - WIDTH / 2,
-                        transform.position.y + 1f, transform.position.z + j - HEIGHT / 2), transform.rotation);
-                    bool isCorner = false;
-                    if ((i == 0 && j == 0) || (i == 0 && j == HEIGHT - 1) || (i == WIDTH - 1 && j == HEIGHT - 1) || (i == WIDTH - 1 && j == 0))
+                    //TODO
+                    //door
+                    if (i == 1 && j == HEIGHT-1)
                     {
-                        isCorner = true;
+                        //placement of door maybe?
                     }
-                    int angle = 2;
-                    if (i == 0)
-                        angle += 0;
-                    if (j == 0)
-                        angle += 3;
-                    if (i == WIDTH - 1)
-                        angle += 0;
-                    if (j == HEIGHT - 1)
-                        angle += 1;
-                    if (i == WIDTH - 1 && j == 0)
-                        angle -= 1;
-                    if (i == 0 && j == HEIGHT - 1)
-                        angle -= 1;
-                    if (i == WIDTH - 1 && !isCorner)
-                        angle += 2;
-                    newWall.GetComponent<wallPlacementSpotScript>().setOrientation(angle * 90, isCorner);
-                    wallPlacementSpots.Add(newWall);
+                    else {
+                        GameObject newWall = (GameObject)Instantiate(wallPlacementSpot, new Vector3(transform.position.x + i - WIDTH / 2,
+                            transform.position.y + 1f, transform.position.z + j - HEIGHT / 2), transform.rotation);
+                        bool isCorner = false;
+                        if ((i == 0 && j == 0) || (i == 0 && j == HEIGHT - 1) || (i == WIDTH - 1 && j == HEIGHT - 1) || (i == WIDTH - 1 && j == 0))
+                        {
+                            isCorner = true;
+                        }
+                        int angle = 2;
+                        if (i == 0)
+                            angle += 0;
+                        if (j == 0)
+                            angle += 3;
+                        if (i == WIDTH - 1)
+                            angle += 0;
+                        if (j == HEIGHT - 1)
+                            angle += 1;
+                        if (i == WIDTH - 1 && j == 0)
+                            angle -= 1;
+                        if (i == 0 && j == HEIGHT - 1)
+                            angle -= 1;
+                        if (i == WIDTH - 1 && !isCorner)
+                            angle += 2;
+                        newWall.GetComponent<wallPlacementSpotScript>().setOrientation(angle * 90, isCorner);
+                        wallPlacementSpots.Add(newWall);
+                    }
                 }
             }
         }
@@ -75,7 +83,6 @@ public class wallsScript : MonoBehaviour {
         }
         if (!laddersDeployed)
         {
-            Debug.Log("ladders deployed");
             deployLadders();
             return true;
         }
@@ -97,7 +104,11 @@ public class wallsScript : MonoBehaviour {
     void deployLadders()
     {
         //top
-        Instantiate(ladder, transform.position + new Vector3((-(float)WIDTH) / 2f - 2f, 3.5f, 0), transform.rotation);
+        if (!laddersDeployed)
+        {
+            laddersDeployed = true;
+            Instantiate(ladder, transform.position + new Vector3((-(float)WIDTH) / 2f - 2f, 3.5f, 0), transform.rotation);
+        }
     }
 
     public bool anyWorkingSpotsLeft()
